@@ -1,0 +1,60 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A cool thing made with Glitch">
+
+    <title>Express App</title>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/script.js" defer></script>
+  </head>
+  <body class="has-background-dark">
+
+    <div class='container wrapper py-6'>
+      
+    
+    <form action="/thoughts" method="POST" class='box myform'>
+      <h1 class='title is-size-3 has-text-centered'>
+      Create Post
+      </h1>
+       <input type="text" placeholder="Name" class='input is-success my-3' name="name" required>
+        <input type="text" placeholder="Thought" class='input is-success my-3' name="thought" required>
+      <button type="submit" class='button my-3'>Submit</button>
+    </form>
+    
+      <div class='box posts'>
+        <% if(thoughts.length>0){ %>
+        <% for(var i= 0; i<thoughts.length; i++) {%> 
+      <div class='oneThought px-4'>
+      
+      <span class='has-text-centered pt-4'><%= thoughts[i].thought %></span> 
+      <span class='name is-size-7 py-2'><%= thoughts[i].name %></span>
+      <div class='all-btn pb-4'>
+        <button class='button are-small is-rounded like-btn mx-3'>Like</button>
+        <button class='button are-small is-rounded comment-btn mx-3'>Comment</button>
+        <button class='button are-small is-rounded del-btn'>Delete</button>
+        </div>
+      
+      
+        
+          </div>
+        <% } %>
+       <% } %>
+        
+      <% if(thoughts.length==0) { %>
+        <span>Nothing to Show here (Add something)</span>
+        <% } %>
+        
+     </div>
+    
+  </div>
+  </body>
+</html>
