@@ -1,0 +1,57 @@
+  <!--       //modal which get activated on comments button click -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A cool thing made with Glitch">
+
+    <title>Express App</title>
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/script.js" defer></script>
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  </head>
+  <body class="has-background-dark px-3">
+    
+ <div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Comments</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    <% if(data!== null){ %>
+    <% for(var i=1; i<data.comments.length; i++){ %>
+    
+    <div class='commentBox'>
+    <span class='button is-dark is-rounded mr-3 by'><%= data.comments[i].by%></span>
+    <span >: <%= data.comments[i].comment %></span>
+    
+
+      </div>
+    <% } %>
+      <% } %>
+    </section>
+    
+    <footer class="modal-card-foot " id= "<%= id %>" >
+        <input class='input mr-3' type='text' required>
+        <button class="button is-success addComment" type='submit'>Comment</button>
+      
+      
+      
+      <button class="button" onclick='modalCloseFunc()'>Cancel</button>
+    </footer>
+    
+    
+  </div>
+</div>
+    
+  </body>
+</html>

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@600&display=swap');
 
 body{
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -13,7 +13,10 @@ body{
   justify-content: space-around;
   
 }
-
+.changeNameBtn{
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 1px;
+}
 .myform{
   flex-basis: 450px;
   height: 300px;
@@ -23,16 +26,42 @@ body{
   font-family: 'Bebas Neue', cursive;
   letter-spacing: 2px;
 }
+
+/* code for changing style of scrollbar */
+::-webkit-scrollbar{
+  width: 10px;
+}
+
+::-webkit-scrollbar-track{
+  background: #ddd;
+  border-radius: 40px;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #48c774;
+  border-radius: 40px;
+}
+
+/* done */
+
 .posts{
   flex-basis: 450px;
-  margin-bottom: 1.5rem;
   font-family: 'Raleway', sans-serif;
   
+}
+.hiddenName{
+  display: none;
+}
+
+.all-btn{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .del-btn , .like-btn , .comment-btn{
   font-size: 10px;
   font-family: 'Raleway', sans-serif;
+  
   
 }
 
@@ -47,4 +76,49 @@ body{
   border-radius: 14px;
   font-family: 'Raleway', sans-serif;
 
+}
+
+.commentBox{
+  
+  border: 0.5px solid #dbdbdb;;
+  margin-bottom: 0.2rem;
+  padding: 0.5rem;
+  background-color: #fff;
+  border-radius: 14px;
+  font-size: 15px;
+  font-family: 'Raleway', sans-serif;
+
+}
+.by{
+  font-size: 10px;
+}
+.likesCount{
+  font-size: 1.2em;
+  background-color: black;
+  color: white;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  border-radius: 16px;
+}
+
+
+@media only screen and (min-width: 990px){
+  .posts{
+    max-height: 85vh;
+    overflow-y: scroll;
+  }
+  .modal-card-body{
+    max-height: 65vh;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (max-width: 350px){
+  .del-btn , .like-btn , .comment-btn{
+   flex: 30% ;
+  margin-bottom: 10px;
+  
+  
+}
+  
 }

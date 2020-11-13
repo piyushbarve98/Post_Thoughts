@@ -15,36 +15,57 @@
 
     <!-- import the webpage's client-side javascript file -->
     <script src="/script.js" defer></script>
+<!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   </head>
-  <body class="has-background-dark">
-
-    <div class='container wrapper py-6'>
+  <body class="has-background-dark px-3">
+    
       
     
+    <div class='container wrapper py-6'>
+      
+    <div class='form-box is-flex-direction-row'>
+      
+      
     <form action="/thoughts" method="POST" class='box myform'>
       <h1 class='title is-size-3 has-text-centered'>
       Create Post
       </h1>
        <input type="text" placeholder="Name" class='input is-success my-3' name="name" required>
         <input type="text" placeholder="Thought" class='input is-success my-3' name="thought" required>
-      <button type="submit" class='button my-3'>Submit</button>
-    </form>
+      <div class='has-text-centered'>
+        <button type="submit" class='button is-dark my-3 is-rounded '>Submit</button>
+      </div>
+      
     
+    </form>
+      <button class="button is-rounded is-success changeNameBtn mb-3">
+        <span class='changeName'>Change Name</span>
+      </button>
+      
+        
+    
+    </div>
+      
       <div class='box posts'>
+        <h1 class='title is-size-4 has-text-centered'>
+      All Posts
+      </h1>
         <% if(thoughts.length>0){ %>
         <% for(var i= 0; i<thoughts.length; i++) {%> 
-      <div class='oneThought px-4'>
+      <div class='oneThought px-4' id= "<%= thoughts[i]._id %>" >
       
       <span class='has-text-centered pt-4'><%= thoughts[i].thought %></span> 
       <span class='name is-size-7 py-2'><%= thoughts[i].name %></span>
       <div class='all-btn pb-4'>
-        <button class='button are-small is-rounded like-btn mx-3'>Like</button>
-        <button class='button are-small is-rounded comment-btn mx-3'>Comment</button>
-        <button class='button are-small is-rounded del-btn'>Delete</button>
-        </div>
-      
-      
+        <button class='button are-small is-rounded is-outlined is-dark like-btn'>Like<span class='likesCount ml-1'> <%= thoughts[i].likes.count %></span></button>
+        <button class='button are-small is-rounded is-outlined is-dark comment-btn mx-3'>Comment 
+          
         
+          <span class='likesCount ml-1'><%= thoughts[i].comments.length - 1 %></span>
+      
+        </button>
+        <button class='button are-small is-rounded is-outlined is-dark del-btn'>Delete</button>
+        </div>       
           </div>
         <% } %>
        <% } %>
@@ -54,7 +75,10 @@
         <% } %>
         
      </div>
+  
+   
     
-  </div>
+     
+ 
   </body>
 </html>
